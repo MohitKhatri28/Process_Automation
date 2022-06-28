@@ -32,21 +32,27 @@ public class LoginDao {
 				login.setArea_pref_1(rs.getInt("area_pref_3"));
 				
 				rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + login.getGroup_id() +" and role_id = 1;");
-				login.setLeaderName(rs.getString("full_name"));
-				login.setLeaderEnrollment(rs.getString("enroll_num"));
-				
-				rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + login.getGroup_id() +" and role_id = 2;");
-				login.setMem_1_Name(rs.getString("full_name"));
-				login.setMem_1_Enrollment(rs.getString("enroll_num"));
-				rs.next();
-				login.setMem_2_Name(rs.getString("full_name"));
-				login.setMem_2_Enrollment(rs.getString("enroll_num"));
-				rs.next();
-				login.setMem_3_Name(rs.getString("full_name"));
-				login.setMem_3_Enrollment(rs.getString("enroll_num"));
-				rs.next();
-				login.setMem_4_Name(rs.getString("full_name"));
-				login.setMem_4_Enrollment(rs.getString("enroll_num"));				
+				if(rs.next()) {
+					login.setLeaderName(rs.getString("full_name"));
+					login.setLeaderEnrollment(rs.getString("enroll_num"));
+					
+					rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + login.getGroup_id() +" and role_id = 2;");
+					if(rs.next()) {
+						login.setMem_1_Name(rs.getString("full_name"));
+						login.setMem_1_Enrollment(rs.getString("enroll_num"));
+						rs.next();
+						login.setMem_2_Name(rs.getString("full_name"));
+						login.setMem_2_Enrollment(rs.getString("enroll_num"));
+						rs.next();
+						login.setMem_3_Name(rs.getString("full_name"));
+						login.setMem_3_Enrollment(rs.getString("enroll_num"));
+						rs.next();
+						login.setMem_4_Name(rs.getString("full_name"));
+						login.setMem_4_Enrollment(rs.getString("enroll_num"));
+					}
+					
+				}
+								
 			}
 			
 		}

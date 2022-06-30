@@ -2,10 +2,6 @@ package com.project_process_automation.login;
 
 public class Login {
 	
-	private int login_id;
-	private int group_id;
-	
-	
 	private String leaderName;
 	private String leaderEnrollment;
 	private String mem_1_Name;
@@ -22,22 +18,9 @@ public class Login {
 	private int area_pref_2;
 	private int area_pref_3;
 	private String username;
-	private String password;
 	
 	
 	//Getters and Setters
-	public int getLogin_id() {
-		return login_id;
-	}
-	public void setLogin_id(int login_id) {
-		this.login_id = login_id;
-	}
-	public int getGroup_id() {
-		return group_id;
-	}
-	public void setGroup_id(int group_id) {
-		this.group_id = group_id;
-	}
 	public String getLeaderName() {
 		return leaderName;
 	}
@@ -121,12 +104,6 @@ public class Login {
 	}
 	public void setUsername(String username) {
 		this.username = username;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	
 	

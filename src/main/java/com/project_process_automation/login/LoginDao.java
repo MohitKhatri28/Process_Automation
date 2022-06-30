@@ -15,28 +15,28 @@ public class LoginDao {
 		Statement st = con.createStatement();
 
 		ResultSet rs = st.executeQuery("SELECT * FROM login WHERE username = '" + username +"' and pswd = '"+ password +"';");
-		
+		int login_id=0;
+		int group_id=0;
 		
 		if (rs.next()) {
 			login = new Login();
 			
-			login.setLogin_id(rs.getInt("login_id"));
+			login_id = rs.getInt("login_id");
 			login.setUsername(username);
-			login.setPassword(password);
 			
-			rs = st.executeQuery("SELECT * FROM student_group WHERE login_id = " + login.getLogin_id() +";");
+			rs = st.executeQuery("SELECT * FROM student_group WHERE login_id = " + login_id +";");
 			if(rs.next()) {
-				login.setGroup_id(rs.getInt("group_id"));
+				group_id = rs.getInt("group_id");
 				login.setArea_pref_1(rs.getInt("area_pref_1"));
 				login.setArea_pref_1(rs.getInt("area_pref_2"));
 				login.setArea_pref_1(rs.getInt("area_pref_3"));
 				
-				rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + login.getGroup_id() +" and role_id = 1;");
+				rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + group_id +" and role_id = 1;");
 				if(rs.next()) {
 					login.setLeaderName(rs.getString("full_name"));
 					login.setLeaderEnrollment(rs.getString("enroll_num"));
 					
-					rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + login.getGroup_id() +" and role_id = 2;");
+					rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + group_id +" and role_id = 2;");
 					if(rs.next()) {
 						login.setMem_1_Name(rs.getString("full_name"));
 						login.setMem_1_Enrollment(rs.getString("enroll_num"));

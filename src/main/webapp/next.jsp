@@ -1,3 +1,13 @@
+<%@page import="com.project_process_automation.login.Login" %>
+<% 
+	Login u=(Login)session.getAttribute("user");	
+	if(u==null){
+		response.sendRedirect("index.jsp");
+	}
+	
+%>
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -8,15 +18,10 @@
 </head>
 <body>
 
-	<%
-		if(session.getAttribute("username")==null){
-			response.sendRedirect("index.jsp");
-		}
 	
-	%>
 
 	login successful <br/>
-	Welcome ${username}
+	Welcome <%= u.getUsername() %>
 	
 </body>
 </html>

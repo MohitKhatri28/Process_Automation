@@ -59,7 +59,9 @@ public class LoginDao {
 		else {
            return null;
 		}
-
+		rs.close();
+		st.close();
+		con.close();
         return login;
 	}
 }	

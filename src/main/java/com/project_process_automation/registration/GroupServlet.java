@@ -62,10 +62,10 @@ public class GroupServlet extends HttpServlet {
 		group.setArea_pref_1(area_pref_1);
 		group.setArea_pref_2(area_pref_2);
 		group.setArea_pref_3(area_pref_3);
-		group.setAvg_cgpa(avg_cgpa);
 		group.setGuide_pref_1(guide_pref_1);
 		group.setGuide_pref_2(guide_pref_2);
 		group.setGuide_pref_3(guide_pref_3);
+		group.setAvg_cgpa(avg_cgpa);
 		group.setLeaderEnrollment(leaderEnrollment);
 		group.setLeaderName(leaderName);
 		group.setMem_1_Enrollment(mem_1_Enrollment);

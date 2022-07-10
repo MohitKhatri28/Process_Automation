@@ -1,4 +1,4 @@
-package com.project_process_automation.allotment;
+package com.project_process_automation.areaDescription;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -8,19 +8,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.project_process_automation.login.Login;
+import com.project_process_automation.login.LoginDao;
 
 /**
- * Servlet implementation class AllotmentServlet
+ * Servlet implementation class AreaDescriptionServlet
  */
-@WebServlet("/allot")
-public class AllotmentServlet extends HttpServlet {
+@WebServlet("/area_desc")
+public class AreaDescriptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	private AllotmentDao allotdao = new AllotmentDao();
+    
+	private AreaDescriptionDao areaDescDao = new AreaDescriptionDao();
 //    /**
 //     * @see HttpServlet#HttpServlet()
 //     */
-//    public AllotmentServlet() {
+//    public AreaDescriptionServlet() {
 //        super();
 //        // TODO Auto-generated constructor stub
 //    }
@@ -37,14 +41,24 @@ public class AllotmentServlet extends HttpServlet {
 //	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 //	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String area_desc_1 = request.getParameter("area_desc_1");
+		String area_desc_2 = request.getParameter("area_desc_2");
+		String area_desc_3 = request.getParameter("area_desc_3");
+		
+		HttpSession session = request.getSession();
+		Login u=(Login)session.getAttribute("user");	
+		if(u==null){
+			response.sendRedirect("index.jsp");
+		}
+		int grp_id = u.getGroup_id();
+		
 		try {
-			allotdao.allot();
-			
-			response.sendRedirect("admin.jsp");
+			areaDescDao.InsertAreaDescription(grp_id,area_desc_1,area_desc_2,area_desc_3);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		response.sendRedirect("index.jsp");
 	}
 
 }

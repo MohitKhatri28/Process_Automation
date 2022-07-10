@@ -247,7 +247,7 @@
                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                       </svg>
-                      <span><b>USERNAME</b></span>
+                      <span><%= u.getUsername() %></span>
                     </a>
                   </li>
                   <li class="flex">
@@ -274,39 +274,47 @@
             DESCRIPTION OF PREFERENCES
           </h2>
               <!-- CTA -->
-              
-                <div class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
-
-                  <span>
-                    <ol>
-                      <li>1.Write the name of the selected area</li>
-                      <li>2.Describe the project for the respective selected area </li>
-                      <li>3.The project description should in about 100 words per area selected </li>
-
-                    </ol>
-                  </span>
-                </div>
-
-              
-
-              <div class="max-w-2xl px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-                <form class="form" >
-                  <label for="fname">Description of Area Preference 1:</label><br>
-                  <input type="text" id="fname" name="fname" style="border:1px solid black; height: 100px; width: 50%;"><br>
-                  <label for="fname">Description of Area Preference 1:</label><br>
-                  <input type="text" id="fname" name="fname" style="border:1px solid black; height: 100px; width: 50%;"><br>
-                  <label for="fname">Description of Area Preference 1:</label><br>
-                  <input type="text" id="fname" name="fname" style="border:1px solid black; height: 100px; width: 50%;"><br>
-                  
-                </form>
-              </div>
-
-              <div>
-                <button @click="openModal"
-                  class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                  SUBMIT
-                </button>
-              </div>
+              <%
+              	if(u.getArea_1_desc().equals(""))
+              	{
+              	%>
+              			 <div class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
+		                  <span>
+		                    <ol>
+		                      <li>1.Write the name of the selected area</li>
+		                      <li>2.Describe the project for the respective selected area </li>
+		                      <li>3.The project description should in about 100 words per area selected </li>
+		
+		                    </ol>
+		                  </span>
+		                </div>
+		
+		              
+		
+		              <div class="max-w-2xl px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+		                <form class="form" action="<%= request.getContextPath() %>/area_desc" method="POST" >
+		                  <label for="fname">Description of Area Preference 1:</label><br>
+		                  <input type="text" id="fname" name="area_desc_1" style="border:1px solid black; height: 100px; width: 50%;"><br>
+		                  <label for="fname">Description of Area Preference 2:</label><br>
+		                  <input type="text" id="fname" name="area_desc_2" style="border:1px solid black; height: 100px; width: 50%;"><br>
+		                  <label for="fname">Description of Area Preference 3:</label><br>
+		                  <input type="text" id="fname" name="area_desc_3" style="border:1px solid black; height: 100px; width: 50%;"><br>
+		                  <button type="submit"
+			                  class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+			                  Submit
+			              </button>
+		                </form>
+		              </div>
+              	<%
+              	}
+              	else{
+              		%>
+              		
+              		
+              		<%
+              	}
+              %>
+               
             </div>
           </main>
         </div>

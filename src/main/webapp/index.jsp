@@ -49,10 +49,16 @@
 			      	<div class="d-flex">
 			      		<div class="w-100">
 			      			<h3 class="mb-4">Sign In</h3>
-			      		</div>
-								
+			      		</div>		
 			      	</div>
-						<form action="<%= request.getContextPath() %>/login" method="POST"class="signin-form">
+			      	<form action="<%= request.getContextPath() %>/login" method="POST"class="signin-form">
+			      	<label for="signin">Sign in as:</label>
+					  <select name="who" id="signin">
+						<option value="1">Student</option>
+						<option value="2">Teacher</option>
+						<option value="3">Admin</option>
+					  </select>
+						
 			      		<div class="form-group mb-3">
 			      			<label class="label">Username</label>
 			      			<input type="text" class="form-control" name="username" placeholder="Username" required>

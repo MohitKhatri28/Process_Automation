@@ -16,7 +16,6 @@ public class LoginDao {
 
 		ResultSet rs = st.executeQuery("SELECT * FROM login WHERE username = '" + username +"' and pswd = '"+ password +"';");
 		int login_id=0;
-		int group_id=0;
 		
 		if (rs.next()) {
 			login = new Login();
@@ -26,17 +25,17 @@ public class LoginDao {
 			
 			rs = st.executeQuery("SELECT * FROM student_group WHERE login_id = " + login_id +";");
 			if(rs.next()) {
-				group_id = rs.getInt("group_id");
+				login.setGroup_id(rs.getInt("group_id"));
 				login.setArea_pref_1(rs.getInt("area_pref_1"));
 				login.setArea_pref_1(rs.getInt("area_pref_2"));
 				login.setArea_pref_1(rs.getInt("area_pref_3"));
 				
-				rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + group_id +" and role_id = 1;");
+				rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + login.getGroup_id() +" and role_id = 1;");
 				if(rs.next()) {
 					login.setLeaderName(rs.getString("full_name"));
 					login.setLeaderEnrollment(rs.getString("enroll_num"));
 					
-					rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + group_id +" and role_id = 2;");
+					rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + login.getGroup_id() +" and role_id = 2;");
 					if(rs.next()) {
 						login.setMem_1_Name(rs.getString("full_name"));
 						login.setMem_1_Enrollment(rs.getString("enroll_num"));
@@ -49,6 +48,18 @@ public class LoginDao {
 						rs.next();
 						login.setMem_4_Name(rs.getString("full_name"));
 						login.setMem_4_Enrollment(rs.getString("enroll_num"));
+						
+						rs = st.executeQuery("SELECT * FROM area_description WHERE group_id = " + login.getGroup_id() +";");
+						if(rs.next()) {
+							login.setArea_1_desc(rs.getString("area_1_desc"));
+							login.setArea_2_desc(rs.getString("area_2_desc"));
+							login.setArea_3_desc(rs.getString("area_3_desc"));
+						}
+						else {
+							login.setArea_1_desc("");
+							login.setArea_2_desc("");
+							login.setArea_3_desc("");
+						}
 					}
 					
 				}

@@ -15,6 +15,8 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private LoginDao loginDao = new LoginDao();
+	private LoginTeacherDao login_teacher_dao = new LoginTeacherDao();
+//	private LoginDao loginDao = new LoginDao();
        
 //    
 //    public LoginServlet() {
@@ -34,24 +36,72 @@ public class LoginServlet extends HttpServlet {
 //	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 //	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		
+		int who = Integer.parseInt(request.getParameter("who"));
+		
+		if(who==1) {
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+					
+			try {
+				Login user = loginDao.getUser(username, password);
 				
-		try {
-			Login user = loginDao.getUser(username, password);
-			
-			if(user == null) {
-				response.sendRedirect("index.jsp");
+				if(user == null) {
+					response.sendRedirect("index.jsp");
+				}
+				else {
+					HttpSession session = request.getSession();
+					session.setAttribute("user", user);				
+					response.sendRedirect("profile.jsp");
+				}
+				
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			else {
-				HttpSession session = request.getSession();
-				session.setAttribute("user", user);				
-				response.sendRedirect("profile.jsp");
-			}
-			
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
+		else if(who==2) {
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+					
+			try {
+				LoginTeacher teacher = login_teacher_dao.getTeacher(username, password);
+				
+				if(teacher == null) {
+					response.sendRedirect("index.jsp");
+				}
+				else {
+					HttpSession session = request.getSession();
+					session.setAttribute("teacher", teacher);				
+					response.sendRedirect("group1.jsp");
+				}
+				
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if (who==3) {
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+					
+			try {
+				LoginTeacher teacher = login_teacher_dao.getTeacher(username, password);
+				
+				if(teacher == null) {
+					response.sendRedirect("index.jsp");
+				}
+				else {
+					HttpSession session = request.getSession();
+					session.setAttribute("teacher", teacher);				
+					response.sendRedirect("admin.jsp");
+				}
+				
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	}
 }

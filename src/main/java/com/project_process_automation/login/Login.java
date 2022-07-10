@@ -1,6 +1,7 @@
 package com.project_process_automation.login;
 
 public class Login {
+	private int group_id;
 	
 	private String leaderName;
 	private String leaderEnrollment;
@@ -8,6 +9,7 @@ public class Login {
 	private String mem_1_Enrollment;
 	private String mem_2_Name;
 	private String mem_2_Enrollment;
+	
 	private String mem_3_Name;
 	private String mem_3_Enrollment;
 	private String mem_4_Name;
@@ -15,12 +17,42 @@ public class Login {
 	
 	
 	private int area_pref_1;
+	
 	private int area_pref_2;
 	private int area_pref_3;
+	
+	private String area_1_desc;
+	private String area_2_desc;
+	private String area_3_desc;
+	
 	private String username;
 	
 	
 	//Getters and Setters
+	public String getArea_1_desc() {
+		return area_1_desc;
+	}
+	public void setArea_1_desc(String area_1_desc) {
+		this.area_1_desc = area_1_desc;
+	}
+	public String getArea_2_desc() {
+		return area_2_desc;
+	}
+	public void setArea_2_desc(String area_2_desc) {
+		this.area_2_desc = area_2_desc;
+	}
+	public String getArea_3_desc() {
+		return area_3_desc;
+	}
+	public void setArea_3_desc(String area_3_desc) {
+		this.area_3_desc = area_3_desc;
+	}
+	public int getGroup_id() {
+		return group_id;
+	}
+	public void setGroup_id(int group_id) {
+		this.group_id = group_id;
+	}
 	public String getLeaderName() {
 		return leaderName;
 	}

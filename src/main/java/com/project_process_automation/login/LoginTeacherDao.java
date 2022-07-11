@@ -14,7 +14,7 @@ public class LoginTeacherDao {
 		Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/project_process_automation?useSSl=false","root","Messidona#3");
 		Statement st = con.createStatement();
 
-		ResultSet rs = st.executeQuery("SELECT * FROM login WHERE username = '" + username +"' and pswd = '"+ password +"';");
+		ResultSet rs = st.executeQuery("SELECT * FROM login WHERE username = '" + username +"' and pswd = '"+ password +"' and who_id = 2;");
 		int login_id=0;
 		
 		if (rs.next()) {

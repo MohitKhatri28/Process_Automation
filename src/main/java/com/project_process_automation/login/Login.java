@@ -15,15 +15,21 @@ public class Login {
 	private String mem_4_Name;
 	private String mem_4_Enrollment;
 	
+	private String guide_alloted="";
 	
+	public String getGuide_alloted() {
+		return guide_alloted;
+	}
+	public void setGuide_alloted(String guide_alloted) {
+		this.guide_alloted = guide_alloted;
+	}
 	private int area_pref_1;
-	
 	private int area_pref_2;
 	private int area_pref_3;
 	
-	private String area_1_desc;
-	private String area_2_desc;
-	private String area_3_desc;
+	private String area_1_desc="";
+	private String area_2_desc="";
+	private String area_3_desc="";
 	
 	private String username;
 	

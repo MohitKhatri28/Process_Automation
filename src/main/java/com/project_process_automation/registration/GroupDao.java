@@ -15,7 +15,7 @@ public class GroupDao {
 		Statement st = con.createStatement();
 		
 		//Insert into login
-		int count = st.executeUpdate("INSERT INTO login (username, pswd) VALUES ('" + group.getUsername() +"', '"+ group.getPassword() +"');",Statement.RETURN_GENERATED_KEYS);
+		int count = st.executeUpdate("INSERT INTO login (username, pswd, who_id) VALUES ('" + group.getUsername() +"', '"+ group.getPassword() +"', 1);",Statement.RETURN_GENERATED_KEYS);
 		ResultSet rs = st.getGeneratedKeys();
 		//Storing last inserted login_id
 		int log_id=0;

@@ -52,6 +52,30 @@ public class LoginTeacherDao {
 						login_teacher.setGroup_1_area_3(rs.getString("area"));
 					}
 					
+					//Getting member names
+					rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + login_teacher.getGroup_1() +" and role_id = 1;");
+					if(rs.next()) {
+						login_teacher.setGroup_1_leaderName(rs.getString("full_name"));
+						login_teacher.setGroup_1_leaderEnrollment(rs.getString("enroll_num"));
+						
+						rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + login_teacher.getGroup_1() +" and role_id = 2;");
+						if(rs.next()) {
+							login_teacher.setGroup_1_mem_1_Name(rs.getString("full_name"));
+							login_teacher.setGroup_1_mem_1_Enrollment(rs.getString("enroll_num"));
+							rs.next();
+							login_teacher.setGroup_1_mem_2_Name(rs.getString("full_name"));
+							login_teacher.setGroup_1_mem_2_Enrollment(rs.getString("enroll_num"));
+							rs.next();
+							login_teacher.setGroup_1_mem_3_Name(rs.getString("full_name"));
+							login_teacher.setGroup_1_mem_3_Enrollment(rs.getString("enroll_num"));
+							rs.next();
+							login_teacher.setGroup_1_mem_4_Name(rs.getString("full_name"));
+							login_teacher.setGroup_1_mem_4_Enrollment(rs.getString("enroll_num"));
+							
+						}
+						
+					}
+					
 					//Setting description of areas
 					rs = st.executeQuery("SELECT * FROM area_description WHERE group_id = " + login_teacher.getGroup_1() +";");
 					if(rs.next()) {
@@ -81,7 +105,29 @@ public class LoginTeacherDao {
 					if(rs.next()) {
 						login_teacher.setGroup_2_area_3(rs.getString("area"));
 					}
-					
+					//Getting member names
+					rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + login_teacher.getGroup_2() +" and role_id = 1;");
+					if(rs.next()) {
+						login_teacher.setGroup_2_leaderName(rs.getString("full_name"));
+						login_teacher.setGroup_2_leaderEnrollment(rs.getString("enroll_num"));
+						
+						rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + login_teacher.getGroup_2() +" and role_id = 2;");
+						if(rs.next()) {
+							login_teacher.setGroup_2_mem_1_Name(rs.getString("full_name"));
+							login_teacher.setGroup_2_mem_1_Enrollment(rs.getString("enroll_num"));
+							rs.next();
+							login_teacher.setGroup_2_mem_2_Name(rs.getString("full_name"));
+							login_teacher.setGroup_2_mem_2_Enrollment(rs.getString("enroll_num"));
+							rs.next();
+							login_teacher.setGroup_2_mem_3_Name(rs.getString("full_name"));
+							login_teacher.setGroup_2_mem_3_Enrollment(rs.getString("enroll_num"));
+							rs.next();
+							login_teacher.setGroup_2_mem_4_Name(rs.getString("full_name"));
+							login_teacher.setGroup_2_mem_4_Enrollment(rs.getString("enroll_num"));
+							
+						}
+						
+					}
 					//Setting description of areas
 					rs = st.executeQuery("SELECT * FROM area_description WHERE group_id = " + login_teacher.getGroup_2() +";");
 					if(rs.next()) {
@@ -111,7 +157,29 @@ public class LoginTeacherDao {
 					if(rs.next()) {
 						login_teacher.setGroup_3_area_3(rs.getString("area"));
 					}
-					
+					//Getting member names
+					rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + login_teacher.getGroup_3() +" and role_id = 1;");
+					if(rs.next()) {
+						login_teacher.setGroup_3_leaderName(rs.getString("full_name"));
+						login_teacher.setGroup_3_leaderEnrollment(rs.getString("enroll_num"));
+						
+						rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + login_teacher.getGroup_3() +" and role_id = 2;");
+						if(rs.next()) {
+							login_teacher.setGroup_3_mem_1_Name(rs.getString("full_name"));
+							login_teacher.setGroup_3_mem_1_Enrollment(rs.getString("enroll_num"));
+							rs.next();
+							login_teacher.setGroup_3_mem_2_Name(rs.getString("full_name"));
+							login_teacher.setGroup_3_mem_2_Enrollment(rs.getString("enroll_num"));
+							rs.next();
+							login_teacher.setGroup_3_mem_3_Name(rs.getString("full_name"));
+							login_teacher.setGroup_3_mem_3_Enrollment(rs.getString("enroll_num"));
+							rs.next();
+							login_teacher.setGroup_3_mem_4_Name(rs.getString("full_name"));
+							login_teacher.setGroup_3_mem_4_Enrollment(rs.getString("enroll_num"));
+							
+						}
+						
+					}
 					//Setting description of areas
 					rs = st.executeQuery("SELECT * FROM area_description WHERE group_id = " + login_teacher.getGroup_3() +";");
 					if(rs.next()) {

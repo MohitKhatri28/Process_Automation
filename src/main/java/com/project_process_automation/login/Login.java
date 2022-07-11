@@ -9,7 +9,6 @@ public class Login {
 	private String mem_1_Enrollment;
 	private String mem_2_Name;
 	private String mem_2_Enrollment;
-	
 	private String mem_3_Name;
 	private String mem_3_Enrollment;
 	private String mem_4_Name;
@@ -17,12 +16,7 @@ public class Login {
 	
 	private String guide_alloted="";
 	
-	public String getGuide_alloted() {
-		return guide_alloted;
-	}
-	public void setGuide_alloted(String guide_alloted) {
-		this.guide_alloted = guide_alloted;
-	}
+	
 	private int area_pref_1;
 	private int area_pref_2;
 	private int area_pref_3;
@@ -35,6 +29,12 @@ public class Login {
 	
 	
 	//Getters and Setters
+	public String getGuide_alloted() {
+		return guide_alloted;
+	}
+	public void setGuide_alloted(String guide_alloted) {
+		this.guide_alloted = guide_alloted;
+	}
 	public String getArea_1_desc() {
 		return area_1_desc;
 	}

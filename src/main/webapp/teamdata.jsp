@@ -7,18 +7,19 @@
 	
 %>
 
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
-
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Page</title>
+    <title>Teams Data</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="css/tailwind.output.css" />
@@ -36,13 +37,12 @@
         <!-- Desktop sidebar -->
         <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
             <div class="py-4 text-gray-500 dark:text-gray-400">
-            
                 <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
                     Admin
                 </a>
                 <ul class="mt-6">
                     <li class="relative px-6 py-3">
-					<a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
                             href="admin.jsp">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -53,9 +53,9 @@
                             <span class="ml-4">Allot Guides</span>
                         </a>
                     </li>
-                
+           
                     <li class="relative px-6 py-3">
-                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                        <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
                             href="teamdata.jsp">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -67,6 +67,7 @@
                         </a>
                     </li>
                 </ul>
+
 
 
 
@@ -92,7 +93,8 @@
                 </a>
                 <ul class="mt-6">
                     <li class="relative px-6 py-3">
-					<a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+
+                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
                             href="admin.jsp">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -105,7 +107,7 @@
                     </li>
                 
                     <li class="relative px-6 py-3">
-                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                        <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
                             href="teamdata.jsp">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -117,7 +119,6 @@
                         </a>
                     </li>
                 </ul>
-            </div>
 
         </aside>
         <div class="flex flex-col flex-1 w-full">
@@ -204,18 +205,56 @@
                 </div>
             </header>
             <main class="h-full overflow-y-auto">
-				<form action="<%= request.getContextPath() %>/allot" method=POST>
-	                <div>
-	                    <button type="submit"
-	                        class="flex items-center justify-center px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple ">
-	                        Allot Guides
-	                    </button>
-	                </div>
-				</form>
+                <!--Code for making the table-->
+                <sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://127.0.0.1:3306/project_process_automation?useSSl=false" user="root" password="Messidona#3"/>
+                <sql:query var="rs" dataSource="${db}">select * from student_group order by avg_cgpa desc;</sql:query>
+                                
+                <table border="1" cellpadding="5">
+		            <caption><strong>List of Groups</strong></caption>
+		            <tr>
+		                <th>Group no.</th>
+		                <th>Leader Name</th>
+		                <th>Leader Enrollment</th>
+		                <th>Avg. CGPA</th>
+		                <th>Guide Alloted</th>
+		                <th>Co-Guide</th>
+		            </tr>
+		            <c:forEach items="${rs.rows}" var="group">
+		            	<sql:query var="rs2" dataSource="${db}">SELECT * FROM student where group_id = "${group.group_id}" and role_id = 1;</sql:query>
+		                <c:forEach items="${rs2.rows}" var="leader">
+		                	<sql:query var="rs3" dataSource="${db}">SELECT * FROM teacher where teacher_id = "${group.guide_alloted}";</sql:query>
+			                <c:forEach items="${rs3.rows}" var="guide">
+			                	<c:if test="${empty group.guide_alloted_2}" var="condition">
+			                		<tr>
+				                		<td><c:out value="${group.group_id-7}" /></td>
+				                    	<td><c:out value="${leader.full_name}" /></td>
+				                    	<td><c:out value="${leader.enroll_num}" /></td>
+				                    	<td><c:out value="${group.avg_cgpa}" /></td>
+				                    	<td><c:out value="${guide.full_name}" /></td>
+				                    </tr>
+				                </c:if>
+				                <c:if test="${!condition}">
+				                	<sql:query var="rs4" dataSource="${db}">SELECT * FROM teacher where teacher_id = "${group.guide_alloted_2}";</sql:query>
+				               		<c:forEach items="${rs4.rows}" var="co_guide">
+				            		<tr>
+				                    	<td><c:out value="${group.group_id-7}" /></td>
+				                    	<td><c:out value="${leader.full_name}" /></td>
+				                    	<td><c:out value="${leader.enroll_num}" /></td>
+				                    	<td><c:out value="${group.avg_cgpa}" /></td>
+				                    	<td><c:out value="${guide.full_name}" /></td>	
+				                    	<td><c:out default="" value="${co_guide.full_name}" /></td>	                    	
+				                	</tr>
+				                	</c:forEach>				                	
+				                </c:if>				            				            		
+			            	</c:forEach>
+		            	</c:forEach>
+		            </c:forEach>
+        		</table>
+            </main>
         </div>
-        </main>
+
     </div>
-    </div>
+
     <!-- Modal backdrop. This what you want to place close to the closing body tag -->
     <div x-show="isModalOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0"
         x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150"

@@ -96,14 +96,14 @@ public class AllotmentDao {
 						for (HashMap.Entry<Integer, Integer> x : map.entrySet()) {
 						    if(x.getValue()==2) {
 						    	st5.executeUpdate("UPDATE teacher SET group_id_1 = " + group_id +" WHERE teacher_id = "+ x.getKey() +";");
-						    	st5.executeUpdate("UPDATE student_group SET guide_alloted = " + t_id +" WHERE group_id = "+ group_id +";");
+						    	st5.executeUpdate("UPDATE student_group SET guide_alloted = " + x.getKey() +" WHERE group_id = "+ group_id +";");
 						    	map.put(x.getKey(), 1);
 						    	status=true;
 						    	break;
 						    }
 						    else if(x.getValue()==1) {
 						    	st5.executeUpdate("UPDATE teacher SET group_id_2 = " + group_id +" WHERE teacher_id = "+ x.getKey() +";");
-						    	st5.executeUpdate("UPDATE student_group SET guide_alloted = " + t_id +" WHERE group_id = "+ group_id +";");
+						    	st5.executeUpdate("UPDATE student_group SET guide_alloted = " + x.getKey() +" WHERE group_id = "+ group_id +";");
 						    	map.put(x.getKey(), 0);
 						    	status=true;
 						    	break;
@@ -111,6 +111,41 @@ public class AllotmentDao {
 						}
 						
 					}	
+				}
+			}
+		}
+		//Alloting co-guides
+		rs = st.executeQuery("SELECT * FROM teacher WHERE pref_id <= 8 ORDER BY pref_id;");
+		HashMap<Integer, Integer> map_coguide = new HashMap<>();
+		while(rs.next()) {
+			int teacher_id = rs.getInt("teacher_id");
+			map_coguide.put(teacher_id, 1);
+		}
+		
+		rs = st.executeQuery("SELECT * FROM teacher WHERE pref_id > 8 ORDER BY pref_id;");
+		while(rs.next()) {
+			int group_id_1 = rs.getInt("group_id_1");
+			int group_id_2 = rs.getInt("group_id_2");
+			rs2 = st2.executeQuery("SELECT * FROM student_group WHERE group_id = " + group_id_1 + ";");
+			if(rs2.next()) {
+				for (HashMap.Entry<Integer, Integer> x : map_coguide.entrySet()) {
+					if(x.getValue()==1) {
+				    	st3.executeUpdate("UPDATE teacher SET group_id_3 = " + group_id_1 +" WHERE teacher_id = "+ x.getKey() +";");
+				    	st3.executeUpdate("UPDATE student_group SET guide_alloted_2 = " + x.getKey() +" WHERE group_id = "+ group_id_1 +";");
+				    	map_coguide.put(x.getKey(), 0);
+				    	break;
+				    }
+				}
+			}
+			rs2 = st2.executeQuery("SELECT * FROM student_group WHERE group_id = " + group_id_2 + ";");
+			if(rs2.next()) {
+				for (HashMap.Entry<Integer, Integer> x : map_coguide.entrySet()) {
+					if(x.getValue()==1) {
+				    	st3.executeUpdate("UPDATE teacher SET group_id_3 = " + group_id_2 +" WHERE teacher_id = "+ x.getKey() +";");
+				    	st3.executeUpdate("UPDATE student_group SET guide_alloted_2 = " + x.getKey() +" WHERE group_id = "+ group_id_2 +";");
+				    	map_coguide.put(x.getKey(), 0);
+				    	break;
+				    }
 				}
 			}
 		}

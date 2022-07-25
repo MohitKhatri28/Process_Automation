@@ -34,6 +34,7 @@ public class LoginTeacherDao {
 				//Group 1
 				rs = st.executeQuery("SELECT * FROM student_group WHERE group_id = " + login_teacher.getGroup_1() +";");
 				if(rs.next()) {
+					login_teacher.setGroup_num_1(rs.getInt("group_num"));
 					//Setting areas selected
 					int a1 = rs.getInt("area_pref_1");
 					int a2 = rs.getInt("area_pref_2");
@@ -88,6 +89,7 @@ public class LoginTeacherDao {
 				//Group 2
 				rs = st.executeQuery("SELECT * FROM student_group WHERE group_id = " + login_teacher.getGroup_2() +";");
 				if(rs.next()) {
+					login_teacher.setGroup_num_2(rs.getInt("group_num"));
 					//Setting areas selected
 					int a1 = rs.getInt("area_pref_1");
 					int a2 = rs.getInt("area_pref_2");
@@ -140,6 +142,7 @@ public class LoginTeacherDao {
 				//Group 3
 				rs = st.executeQuery("SELECT * FROM student_group WHERE group_id = " + login_teacher.getGroup_3() +";");
 				if(rs.next()) {
+					login_teacher.setGroup_num_3(rs.getInt("group_num"));
 					//Setting areas selected
 					int a1 = rs.getInt("area_pref_1");
 					int a2 = rs.getInt("area_pref_2");

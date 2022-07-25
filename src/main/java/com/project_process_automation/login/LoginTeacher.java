@@ -8,6 +8,10 @@ public class LoginTeacher {
 	private int group_2=0;
 	private int group_3=0;
 	
+	private int group_num_1=0;
+	private int group_num_2=0;
+	private int group_num_3=0;
+	
 	private String group_1_area_1="";
 	private String group_1_area_2="";
 	private String group_1_area_3="";
@@ -65,6 +69,24 @@ public class LoginTeacher {
 	private String group_3_mem_4_Name="";
 	private String group_3_mem_4_Enrollment="";
 	//Getters and Setters
+	public int getGroup_num_1() {
+		return group_num_1;
+	}
+	public void setGroup_num_1(int group_num_1) {
+		this.group_num_1 = group_num_1;
+	}
+	public int getGroup_num_2() {
+		return group_num_2;
+	}
+	public void setGroup_num_2(int group_num_2) {
+		this.group_num_2 = group_num_2;
+	}
+	public int getGroup_num_3() {
+		return group_num_3;
+	}
+	public void setGroup_num_3(int group_num_3) {
+		this.group_num_3 = group_num_3;
+	}
 	
 	public int getTeacher_id() {
 		return teacher_id;

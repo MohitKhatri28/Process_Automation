@@ -28,8 +28,7 @@
   <script src="js/init-alpine.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
-  <script src="js/charts-lines.js" defer></script>
-  <script src="js/charts-pie.js" defer></script>
+ 
 </head>
 
 <body>
@@ -299,7 +298,7 @@
                   Group No.
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                  <%= u.getGroup_id() %>
+                  <%= u.getGroup_id()-7 %>
                 </p>
               </div>
             </div>
@@ -332,10 +331,10 @@
               </div>
               <div>
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                  Area Alloted
+                  Co-Guide
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                  Name of area
+                  <%= u.getCo_guide() %>
                 </p>
               </div>
             </div>
@@ -350,10 +349,10 @@
               </div>
               <div>
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                  Project Name
+                 Area Alloted
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                  Name of Project
+                  area alloted
                 </p>
               </div>
             </div>

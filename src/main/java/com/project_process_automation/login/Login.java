@@ -2,6 +2,7 @@ package com.project_process_automation.login;
 
 public class Login {
 	private int group_id;
+	private int group_num;
 	
 	private String leaderName;
 	private String leaderEnrollment;
@@ -12,10 +13,11 @@ public class Login {
 	private String mem_3_Name;
 	private String mem_3_Enrollment;
 	private String mem_4_Name;
+	
 	private String mem_4_Enrollment;
 	
 	private String guide_alloted="";
-	
+	private String co_guide="";
 	
 	private int area_pref_1;
 	private int area_pref_2;
@@ -29,6 +31,18 @@ public class Login {
 	
 	
 	//Getters and Setters
+	public int getGroup_num() {
+		return group_num;
+	}
+	public void setGroup_num(int group_num) {
+		this.group_num = group_num;
+	}
+	public String getCo_guide() {
+		return co_guide;
+	}
+	public void setCo_guide(String co_guide) {
+		this.co_guide = co_guide;
+	}
 	public String getGuide_alloted() {
 		return guide_alloted;
 	}

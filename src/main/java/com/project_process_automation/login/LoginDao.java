@@ -27,18 +27,24 @@ public class LoginDao {
 			rs = st.executeQuery("SELECT * FROM student_group WHERE login_id = " + login_id +";");
 			if(rs.next()) {
 				login.setGroup_id(rs.getInt("group_id"));
+				login.setGroup_num(rs.getInt("group_num"));
 				login.setArea_pref_1(rs.getInt("area_pref_1"));
 				login.setArea_pref_1(rs.getInt("area_pref_2"));
 				login.setArea_pref_1(rs.getInt("area_pref_3"));
 				
 				//Getting guide alloted
 				int t_id=0;
+				int co_id=0;
 				t_id = rs.getInt("guide_alloted");
+				co_id = rs.getInt("guide_alloted_2");
 				rs = st.executeQuery("SELECT * FROM teacher WHERE teacher_id = " + t_id +";");
 				if(rs.next()) {
 					login.setGuide_alloted(rs.getString("full_name"));
 				}
-				
+				rs = st.executeQuery("SELECT * FROM teacher WHERE teacher_id = " + co_id +";");
+				if(rs.next()) {
+					login.setCo_guide(rs.getString("full_name"));
+				}
 				//Getting student information
 				rs = st.executeQuery("SELECT * FROM student WHERE group_id = " + login.getGroup_id() +" and role_id = 1;");
 				if(rs.next()) {

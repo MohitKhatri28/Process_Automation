@@ -16,6 +16,7 @@ public class LoginServlet extends HttpServlet {
 	
 	private LoginDao loginDao = new LoginDao();
 	private LoginTeacherDao login_teacher_dao = new LoginTeacherDao();
+	private LoginAdminDao login_admin_dao = new LoginAdminDao();
 //	private LoginDao loginDao = new LoginDao();
        
 //    
@@ -86,14 +87,14 @@ public class LoginServlet extends HttpServlet {
 			String password = request.getParameter("password");
 					
 			try {
-				LoginTeacher teacher = login_teacher_dao.getTeacher(username, password);
+				LoginAdmin admin = login_admin_dao.getTeacher(username, password);
 				
-				if(teacher == null) {
+				if(admin == null) {
 					response.sendRedirect("index.jsp");
 				}
 				else {
 					HttpSession session = request.getSession();
-					session.setAttribute("teacher", teacher);				
+					session.setAttribute("admin", admin);				
 					response.sendRedirect("admin.jsp");
 				}
 				

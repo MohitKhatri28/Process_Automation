@@ -1,36 +1,44 @@
 package com.project_process_automation.login;
 
 public class Login {
-	private int group_id;
-	private int group_num;
+	private int group_id=0;
+	private int group_num=0;
 	
-	private String leaderName;
-	private String leaderEnrollment;
-	private String mem_1_Name;
-	private String mem_1_Enrollment;
-	private String mem_2_Name;
-	private String mem_2_Enrollment;
-	private String mem_3_Name;
-	private String mem_3_Enrollment;
-	private String mem_4_Name;
-	
-	private String mem_4_Enrollment;
+	private String leaderName="";
+	private String leaderEnrollment="";
+	private String mem_1_Name="";
+	private String mem_1_Enrollment="";
+	private String mem_2_Name="";
+	private String mem_2_Enrollment="";
+	private String mem_3_Name="";
+	private String mem_3_Enrollment="";
+	private String mem_4_Name="";
+	private String mem_4_Enrollment="";
 	
 	private String guide_alloted="";
 	private String co_guide="";
 	
-	private int area_pref_1;
-	private int area_pref_2;
-	private int area_pref_3;
+	private int area_pref_1=0;
+	private int area_pref_2=0;
+	private int area_pref_3=0;
+	
 	
 	private String area_1_desc="";
 	private String area_2_desc="";
 	private String area_3_desc="";
 	
-	private String username;
+	private String project_title="";
+	
+	private String username="";
 	
 	
 	//Getters and Setters
+	public String getProject_title() {
+		return project_title;
+	}
+	public void setProject_title(String project_title) {
+		this.project_title = project_title;
+	}
 	public int getGroup_num() {
 		return group_num;
 	}

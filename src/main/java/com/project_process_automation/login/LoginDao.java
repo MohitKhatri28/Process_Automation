@@ -31,7 +31,7 @@ public class LoginDao {
 				login.setArea_pref_1(rs.getInt("area_pref_1"));
 				login.setArea_pref_1(rs.getInt("area_pref_2"));
 				login.setArea_pref_1(rs.getInt("area_pref_3"));
-				
+				login.setProject_title(rs.getString("project_title"));
 				//Getting guide alloted
 				int t_id=0;
 				int co_id=0;

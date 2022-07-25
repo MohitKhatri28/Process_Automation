@@ -1,5 +1,8 @@
 <%@page import="com.project_process_automation.login.Login" %>
 <% 
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); //HTTP 1.1
+	response.setHeader("Pragma", "no-cache"); //HTTP 1.0
+	response.setHeader("Expires", "0"); //Proxies
 	Login u=(Login)session.getAttribute("user");	
 	if(u==null){
 		response.sendRedirect("index.jsp");
@@ -251,16 +254,17 @@
                     </a>
                   </li>
                   <li class="flex">
-                    <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                      href="#">
-                      <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round"
+                    <form action="logout_student" method="POST">
+                    	<button type="submit">
+                          <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round"
                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path
                           d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1">
                         </path>
-                      </svg>
-                      <span>Log out</span>
-                    </a>
+                        </svg>
+                        <span>Log out</span>
+                        </button>
+                    </form>
                   </li>
                 </ul>
               </template>
@@ -294,11 +298,11 @@
 		              <div class="max-w-2xl px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
 		                <form class="form" action="<%= request.getContextPath() %>/area_desc" method="POST" >
 		                  <label for="fname">Description of Area Preference 1:</label><br>
-		                  <input type="text" id="fname" name="area_desc_1" style="border:1px solid black; height: 100px; width: 50%;"><br>
+		                  <textArea id="fname" name="area_desc_1" style="border:1px solid black; height: 100px; width: 50%;"></textArea><br>
 		                  <label for="fname">Description of Area Preference 2:</label><br>
-		                  <input type="text" id="fname" name="area_desc_2" style="border:1px solid black; height: 100px; width: 50%;"><br>
+		                  <textArea id="fname" name="area_desc_2" style="border:1px solid black; height: 100px; width: 50%;"></textArea><br>
 		                  <label for="fname">Description of Area Preference 3:</label><br>
-		                  <input type="text" id="fname" name="area_desc_3" style="border:1px solid black; height: 100px; width: 50%;"><br>
+		                  <textArea id="fname" name="area_desc_3" style="border:1px solid black; height: 100px; width: 50%;"></textArea><br>
 		                  <button type="submit"
 			                  class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
 			                  Submit
@@ -309,8 +313,17 @@
               	}
               	else{
               		%>
-              		You have already submitted this.
-              		
+              		<strong>Description 1</strong>
+              		<%= u.getArea_1_desc() %>
+              		<br>
+              		<br>
+              		<strong>Description 2</strong>
+              		<%= u.getArea_2_desc() %>
+              		<br>
+              		<br>
+              		<strong>Description 3</strong>
+              		<%= u.getArea_3_desc() %>
+              		<br>
               		<%
               	}
               %>

@@ -266,8 +266,6 @@
                         <span>Log out</span>
                         </button>
                     </form>
-                      
-                    
                   </li>
                 </ul>
               </template>
@@ -298,7 +296,7 @@
                   Group No.
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                  <%= u.getGroup_id()-7 %>
+                  <%= u.getGroup_num() %>
                 </p>
               </div>
             </div>
@@ -352,7 +350,7 @@
                  Area Alloted
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                  area alloted
+                  <%= u.getProject_title() %>
                 </p>
               </div>
             </div>

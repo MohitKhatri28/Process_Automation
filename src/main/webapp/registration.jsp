@@ -146,38 +146,7 @@
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
-                        <div class="input-group">
-                            <label class="label">Prefered Guides</label>
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="guide_pref_1">
-                                    <option disabled="disabled" selected="selected">Preference 1</option>
-                                    <option value="1">Guide 1</option>
-                                    <option value="2">Guide 2</option>
-                                    <option value="3">Guide 3</option>
-                                </select>
-                                <div class="select-dropdown"></div>
-                            </div>
-                            <!-- <label class="label">Guide 2</label> -->
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="guide_pref_2">
-                                    <option disabled="disabled" selected="selected">Preference 2</option>
-                                    <option value="1">Guide 1</option>
-                                    <option value="2">Guide 2</option>
-                                    <option value="3">Guide 3</option>
-                                </select>
-                                <div class="select-dropdown"></div>
-                            </div>
-                            <!-- <label class="label">Guide 3</label> -->
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="guide_pref_3">
-                                    <option disabled="disabled" selected="selected">Preference 3</option>
-                                    <option value="1">Guide 1</option>
-                                    <option value="2">Guide 2</option>
-                                    <option value="3">Guide 3</option>
-                                </select>
-                                <div class="select-dropdown"></div>
-                            </div>
-                        </div>
+                        
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">

@@ -51,10 +51,19 @@ public class GroupServlet extends HttpServlet {
 		int area_pref_1 = Integer.parseInt(request.getParameter("area_pref_1"));
 		int area_pref_2 = Integer.parseInt(request.getParameter("area_pref_2"));
 		int area_pref_3 = Integer.parseInt(request.getParameter("area_pref_3"));
-		int guide_pref_1 = Integer.parseInt(request.getParameter("guide_pref_1"));
-		int guide_pref_2 = Integer.parseInt(request.getParameter("guide_pref_2"));
-		int guide_pref_3 = Integer.parseInt(request.getParameter("guide_pref_3"));
 		float avg_cgpa = Float.parseFloat(request.getParameter("avg_cgpa"));
+		
+		String leader_phone_num = request.getParameter("leader_phone_num");
+		String leader_email_id = request.getParameter("leader_email_id");
+		String mem_1_phone_num=request.getParameter("mem_1_phone_num");
+		String mem_1_email_id=request.getParameter("mem_1_email_id");
+		String mem_2_phone_num=request.getParameter("mem_2_phone_num");
+		String mem_2_email_id=request.getParameter("mem_2_email_id");
+		String mem_3_phone_num=request.getParameter("mem_3_phone_num");
+		String mem_3_email_id=request.getParameter("mem_3_email_id");
+		String mem_4_phone_num=request.getParameter("mem_4_phone_num");
+		String mem_4_email_id=request.getParameter("mem_4_email_id");
+		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
@@ -62,9 +71,6 @@ public class GroupServlet extends HttpServlet {
 		group.setArea_pref_1(area_pref_1);
 		group.setArea_pref_2(area_pref_2);
 		group.setArea_pref_3(area_pref_3);
-		group.setGuide_pref_1(guide_pref_1);
-		group.setGuide_pref_2(guide_pref_2);
-		group.setGuide_pref_3(guide_pref_3);
 		group.setAvg_cgpa(avg_cgpa);
 		group.setLeaderEnrollment(leaderEnrollment);
 		group.setLeaderName(leaderName);
@@ -78,7 +84,16 @@ public class GroupServlet extends HttpServlet {
 		group.setMem_4_Name(mem_4_Name);
 		group.setPassword(password);
 		group.setUsername(username);
-		
+		group.setLeader_phone_num(leader_phone_num);
+		group.setLeader_email_id(leader_email_id);
+		group.setMem_1_phone_num(mem_1_phone_num);
+		group.setMem_1_email_id(mem_1_email_id);
+		group.setMem_2_phone_num(mem_2_phone_num);
+		group.setMem_2_email_id(mem_2_email_id);
+		group.setMem_3_phone_num(mem_3_phone_num);
+		group.setMem_3_email_id(mem_3_email_id);
+		group.setMem_4_phone_num(mem_4_phone_num);
+		group.setMem_4_email_id(mem_4_email_id);
 		try {
 			groupDao.registerGroup(group);
 		} catch (ClassNotFoundException e) {

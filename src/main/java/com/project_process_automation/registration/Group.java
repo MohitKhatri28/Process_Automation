@@ -23,6 +23,8 @@ public class Group {
 	private String mem_4_phone_num="";
 	private String mem_4_email_id="";
 	
+	private int dis=0;
+	
 	private int area_pref_1=0;
 	private int area_pref_2=0;
 	private int area_pref_3=0;
@@ -33,6 +35,12 @@ public class Group {
 	private String password="";
 	
 	//Getters and Setters
+	public int getDis() {
+		return dis;
+	}
+	public void setDis(int dis) {
+		this.dis = dis;
+	}
 	public String getLeaderName() {
 		return leaderName;
 	}

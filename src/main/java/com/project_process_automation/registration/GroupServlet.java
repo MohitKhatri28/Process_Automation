@@ -52,6 +52,7 @@ public class GroupServlet extends HttpServlet {
 		int area_pref_2 = Integer.parseInt(request.getParameter("area_pref_2"));
 		int area_pref_3 = Integer.parseInt(request.getParameter("area_pref_3"));
 		float avg_cgpa = Float.parseFloat(request.getParameter("avg_cgpa"));
+		int dis = Integer.parseInt(request.getParameter("dis"));
 		
 		String leader_phone_num = request.getParameter("leader_phone_num");
 		String leader_email_id = request.getParameter("leader_email_id");
@@ -68,6 +69,7 @@ public class GroupServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		Group group = new Group();
+		group.setDis(dis);
 		group.setArea_pref_1(area_pref_1);
 		group.setArea_pref_2(area_pref_2);
 		group.setArea_pref_3(area_pref_3);

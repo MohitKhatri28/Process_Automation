@@ -1,7 +1,10 @@
-package com.project_process_automation.areaDescription;
+package com.project_process_automation.specialization;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +13,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.project_process_automation.login.Login;
+import com.project_process_automation.login.LoginTeacher;
 
 /**
- * Servlet implementation class AreaDescriptionServlet
+ * Servlet implementation class SpecServlet
  */
-@WebServlet("/area_desc")
-public class AreaDescriptionServlet extends HttpServlet {
+@WebServlet("/addSpec")
+public class SpecServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	private AreaDescriptionDao areaDescDao = new AreaDescriptionDao();
+       
 //    /**
 //     * @see HttpServlet#HttpServlet()
 //     */
-//    public AreaDescriptionServlet() {
+//    public SpecServlet() {
 //        super();
 //        // TODO Auto-generated constructor stub
 //    }
@@ -40,24 +42,32 @@ public class AreaDescriptionServlet extends HttpServlet {
 //	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 //	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String area_desc_1 = request.getParameter("area_desc_1");
-		String area_desc_2 = request.getParameter("area_desc_2");
-		String area_desc_3 = request.getParameter("area_desc_3");
 		
 		HttpSession session = request.getSession();
-		Login u=(Login)session.getAttribute("user");	
+		LoginTeacher u=(LoginTeacher)session.getAttribute("teacher");
 		if(u==null){
 			response.sendRedirect("index.jsp");
 		}
-		int grp_id = u.getGroup_id();
 		
+		
+		int spec_id = Integer.parseInt(request.getParameter("spec"));
+		int teacher_id = u.getTeacher_id();
 		try {
-			areaDescDao.InsertAreaDescription(grp_id,area_desc_1,area_desc_2,area_desc_3);
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/project_process_automation?useSSl=false","root","Messidona#3");
+			Statement st = con.createStatement();
+			
+			st.executeUpdate("INSERT INTO teacher_spec (teacher_id, spec_id) VALUES (" + teacher_id + ", "+ spec_id + ");");
+			
+			response.sendRedirect("group1.jsp");
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		response.sendRedirect("index.jsp");
+		
+		
+		
+		
 	}
 
 }

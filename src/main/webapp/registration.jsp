@@ -35,7 +35,7 @@
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Leader</label>
+                                    <label class="label"><strong>Leader</strong></label>
                                     <input class="input--style-4" type="text" placeholder="Full Name" name="leaderName">
                                 </div>
                             </div>
@@ -47,11 +47,26 @@
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Member 1</label>
+                                    <label class="label">Phone No.</label>
+                                    <input class="input--style-4" type="text" name="leader_phone_num">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email ID</label>
+                                    <input class="input--style-4" type="text" name="leader_email_id">
+                                </div>
+                            </div>
+                            
+                            <div class="col-2">
+                            <br>
+                                <div class="input-group">
+                                    <label class="label"><strong>Member 1</strong></label>
                                     <input class="input--style-4" type="text" placeholder="Full Name" name="mem_1_Name">
                                 </div>
                             </div>
                             <div class="col-2">
+                            <br>
                                 <div class="input-group">
                                     <label class="label">Enrollment Number</label>
                                     <input class="input--style-4" type="text" name="mem_1_Enrollment">
@@ -59,11 +74,25 @@
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Member 2</label>
+                                    <label class="label">Phone No.</label>
+                                    <input class="input--style-4" type="text" name="mem_1_phone_num">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email ID</label>
+                                    <input class="input--style-4" type="text" name="mem_1_email_id">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                            <br>
+                                <div class="input-group">
+                                    <label class="label"><strong>Member 2</strong></label>
                                     <input class="input--style-4" type="text" placeholder="Full Name" name="mem_2_Name">
                                 </div>
                             </div>
                             <div class="col-2">
+                            <br>
                                 <div class="input-group">
                                     <label class="label">Enrollment Number</label>
                                     <input class="input--style-4" type="text" name="mem_2_Enrollment">
@@ -71,11 +100,25 @@
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Member 3</label>
+                                    <label class="label">Phone No.</label>
+                                    <input class="input--style-4" type="text" name="mem_2_phone_num">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email ID</label>
+                                    <input class="input--style-4" type="text" name="mem_2_email_id">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                            <br>
+                                <div class="input-group">
+                                    <label class="label"><strong>Member 3</strong></label>
                                     <input class="input--style-4" type="text" placeholder="Full Name" name="mem_3_Name">
                                 </div>
                             </div>
                             <div class="col-2">
+                            <br>
                                 <div class="input-group">
                                     <label class="label">Enrollment Number</label>
                                     <input class="input--style-4" type="text" name="mem_3_Enrollment">
@@ -83,14 +126,40 @@
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Member 4</label>
-                                    <input class="input--style-4" type="text" placeholder="Full Name" name="mem_4_Name">
+                                    <label class="label">Phone No.</label>
+                                    <input class="input--style-4" type="text" name="mem_3_phone_num">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
+                                    <label class="label">Email ID</label>
+                                    <input class="input--style-4" type="text" name="mem_3_email_id">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                            <br>
+                                <div class="input-group">
+                                    <label class="label"><strong>Member 4</strong></label>
+                                    <input class="input--style-4" type="text" placeholder="Full Name" name="mem_4_Name">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                            <br>
+                                <div class="input-group">
                                     <label class="label">Enrollment Number</label>
                                     <input class="input--style-4" type="text" name="mem_4_Enrollment">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Phone No.</label>
+                                    <input class="input--style-4" type="text" name="mem_4_phone_num">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email ID</label>
+                                    <input class="input--style-4" type="text" name="mem_4_email_id">
                                 </div>
                             </div>
                         </div>
@@ -146,7 +215,17 @@
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
-                        
+                        <div class="input-group">
+                            <label class="label">Is Group for DIS?</label>
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="dis">
+                                    <option disabled="disabled" selected="selected">Select</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">

@@ -1,5 +1,5 @@
 <%@page import="com.project_process_automation.login.LoginTeacher" %>
-<%
+<% 
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); //HTTP 1.1
 	response.setHeader("Pragma", "no-cache"); //HTTP 1.0
 	response.setHeader("Expires", "0"); //Proxies
@@ -37,10 +37,10 @@
         <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
           Groups Allotted
         </a>
+        
         <ul class="mt-6">
-          <li class="relative px-6 py-3">
-
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+        <li class="relative px-6 py-3">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
               href="group1.jsp">
               <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -51,10 +51,8 @@
               <span class="ml-4">Group 1</span>
             </a>
           </li>
-        </ul>
-        <ul>
           <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-10"
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
               href="group2.jsp">
               <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -78,8 +76,10 @@
               <span class="ml-4">Group 3</span>
             </a>
           </li>
-		<li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+          
+          <li class="relative px-6 py-3">
+
+            <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-10"
               href="addspecialization.jsp">
               <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -90,6 +90,8 @@
               <span class="ml-4">Add Specialization</span>
             </a>
           </li>
+        
+
 
 
 
@@ -112,10 +114,10 @@
         <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
           Allotted Groups
         </a>
-        <ul class="mt-6">
-          <li class="relative px-6 py-3">
-
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+        
+        <ul>
+        	<li class="relative px-6 py-3">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
               href="group1.jsp">
               <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -126,10 +128,8 @@
               <span class="ml-4">Group 1</span>
             </a>
           </li>
-        </ul>
-        <ul>
           <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-10"
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
               href="group2.jsp">
               <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -153,7 +153,8 @@
             </a>
           </li>
           <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+
+            <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-10"
               href="addspecialization.jsp">
               <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -164,7 +165,7 @@
               <span class="ml-4">Add Specialization</span>
             </a>
           </li>
-
+       
 
 
 
@@ -231,178 +232,35 @@
           </ul>
         </div>
       </header>
-       <%
-          if(u.getGroup_2()!=0)
-          {
-          %>
-      <main class="h-full overflow-y-auto">
-        <div class="container px-6 mx-auto grid">
-          <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Group-<%= u.getGroup_num_2() %>
-          </h2>
-          <!-- CTA -->
-			<div class="w-full overflow-hidden rounded-lg shadow-xs">
-            <div class="w-full overflow-x-auto">
-              <table class="w-full whitespace-no-wrap">
-                <thead>
-                  <tr
-                    class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                    <th class="px-4 py-3">Member</th>
-                    <th class="px-4 py-3">Enrollment no.</th>
-
-                  </tr>
-                </thead>
-                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                  <tr class="text-gray-700 dark:text-gray-400">
-                    <td class="px-4 py-3">
-                      <div class="flex items-center text-sm">
-                        <!-- Avatar with inset shadow -->
-                        <div>
-                          <p class="font-semibold"><%= u.getGroup_2_leaderName() %></p>
-                          <p class="text-xs text-gray-600 dark:text-gray-400">
-                            Leader
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="px-4 py-3 text-sm">
-                      <%= u.getGroup_2_leaderEnrollment() %>
-                    </td>
-
-                  </tr>
-                  <tr class="text-gray-700 dark:text-gray-400">
-                    <td class="px-4 py-3">
-                      <div class="flex items-center text-sm">
-                        <!-- Avatar with inset shadow -->
-                        <div>
-                          <p class="font-semibold"><%= u.getGroup_2_mem_1_Name() %></p>
-                          <p class="text-xs text-gray-600 dark:text-gray-400">
-                            Member
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="px-4 py-3 text-sm">
-                      <%= u.getGroup_2_mem_1_Enrollment() %>
-                    </td>
-
-                  </tr>
-                  <tr class="text-gray-700 dark:text-gray-400">
-                    <td class="px-4 py-3">
-                      <div class="flex items-center text-sm">
-                        <!-- Avatar with inset shadow -->
-
-                        <div>
-                          <p class="font-semibold"><%= u.getGroup_2_mem_2_Name() %></p>
-                          <p class="text-xs text-gray-600 dark:text-gray-400">
-                            Member
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="px-4 py-3 text-sm">
-                      <%= u.getGroup_2_mem_2_Enrollment() %>
-                    </td>
-
-                  </tr>
-                  <tr class="text-gray-700 dark:text-gray-400">
-                    <td class="px-4 py-3">
-                      <div class="flex items-center text-sm">
-                        <!-- Avatar with inset shadow -->
-                        <div>
-                          <p class="font-semibold"><%= u.getGroup_2_mem_3_Name() %></p>
-                          <p class="text-xs text-gray-600 dark:text-gray-400">
-                            Member
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="px-4 py-3 text-sm">
-                      <%= u.getGroup_2_mem_3_Enrollment() %>
-                    </td>
-
-                  </tr>
-                  <tr class="text-gray-700 dark:text-gray-400">
-                    <td class="px-4 py-3">
-                      <div class="flex items-center text-sm">
-                        <!-- Avatar with inset shadow -->
-                        <div>
-                          <p class="font-semibold"><%= u.getGroup_2_mem_4_Name() %></p>
-                          <p class="text-xs text-gray-600 dark:text-gray-400">
-                            Member
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="px-4 py-3 text-sm">
-                      <%= u.getGroup_2_mem_4_Enrollment() %>
-                    </td>
-
-                  </tr>
-
-
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div
-            class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
-            <span><%= u.getGroup_2_area_1() %></span>
-          </div>
-
-
-          <div class="max-w-2xl px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-            <p class="mb-4 text-gray-600 dark:text-gray-400">
-              <%= u.getGroup_2_desc_1() %>
-            </p>
-          </div>
-
-          <div
-            class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
-            <span><%= u.getGroup_2_area_2() %></span>
-          </div>
-
-
-          <div class="max-w-2xl px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-            <p class="mb-4 text-gray-600 dark:text-gray-400">
-              <%= u.getGroup_2_desc_2() %>
-            </p>
-          </div>
-
-          <div
-            class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
-            <span><%= u.getGroup_2_area_3() %></span>
-          </div>
-
-
-          <div class="max-w-2xl px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-            <p class="mb-4 text-gray-600 dark:text-gray-400">
-              <%= u.getGroup_2_desc_3() %>
-            </p>
-          </div>
-          <form class="form" action="<%= request.getContextPath() %>/title2" method="POST">
+      <main>
+      
+      	<form class="form" action="<%= request.getContextPath() %>/addSpec" method="POST">
           	<div class="max-w-2xl px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-              <label for="fname">Enter the title to be allotted</label><br>
-              <input type="text" id="fname" name="group_title" placeholder="Enter title here"
-                style="border:1px solid black; height: 50px; width: 50%;"><br>
+              <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="spec">
+                                    <option disabled="disabled" selected="selected">Select Specialization</option>
+                                    <option value="101">AI/ML</option>
+                                    <option value="102">DATA</option>
+                                    <option value="103">Comp. Arch</option>
+                                    <option value="104">Comp. Networks</option>
+                                    <option value="105">Web & Appl. Design</option>
+                                    <option value="106">S/W Engg.</option>
+                                    <option value="107">Comp. Vision</option>
+                                    <option value="108">Security</option>
+                                    <option value="109">SYSTEMS</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
                 <button type="submit"
 			     class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
 			     	Submit
 			     </button>
           	</div>
            </form>
-		<%
-              	}
-              	else{
-              		%>
-              		
-              		
-              		<%
-              	}
-              %>
-
-        </div>
+      
       </main>
+
+        
     </div>
   </div>
 

@@ -21,14 +21,46 @@ public class AllotmentDao {
 		ResultSet rs2 = null;
 		ResultSet rs3 = null;
 		ResultSet rs4 = null;
+		
+		//map for guides
 		HashMap<Integer, Integer> map = new HashMap<>();
 		while(rs.next()) {
 			int teacher_id = rs.getInt("teacher_id");
 			map.put(teacher_id, 2);
 		}
 		int t_id=0;
-		rs = st.executeQuery("SELECT * FROM student_group ORDER BY avg_cgpa DESC;");
+		//map for co-guides
+		rs = st.executeQuery("SELECT * FROM teacher WHERE pref_id <= 8 ORDER BY pref_id;");
+		HashMap<Integer, Integer> map_coguide = new HashMap<>();
+		while(rs.next()) {
+			int teacher_id = rs.getInt("teacher_id");
+			map_coguide.put(teacher_id, 1);
+		}
 		
+		//allotment for DIS
+		rs = st.executeQuery("SELECT * FROM student_group where dis = 1 ORDER BY avg_cgpa DESC;");
+		if(rs.next()) {
+			int group_id = rs.getInt(1);
+			st2.executeUpdate("UPDATE teacher SET group_id_1 = " + group_id +" WHERE teacher_id = "+ 10 +";");
+			st2.executeUpdate("UPDATE student_group SET guide_alloted = " + 10 +" WHERE group_id = "+ group_id +";");
+			map.put(10, 1);
+			st3.executeUpdate("UPDATE teacher SET group_id_3 = " + group_id +" WHERE teacher_id = "+ 5 +";");
+	    	st3.executeUpdate("UPDATE student_group SET guide_alloted_2 = " + 5 +" WHERE group_id = "+ group_id +";");
+	    	map_coguide.put(5, 0);
+	    	
+	    	if(rs.next()) {
+	    		int group_id_2 = rs.getInt(1);
+				st2.executeUpdate("UPDATE teacher SET group_id_1 = " + group_id_2 +" WHERE teacher_id = "+ 7 +";");
+				st2.executeUpdate("UPDATE student_group SET guide_alloted = " + 7 +" WHERE group_id = "+ group_id_2 +";");
+				map.put(7, 1);
+				st3.executeUpdate("UPDATE teacher SET group_id_3 = " + group_id_2 +" WHERE teacher_id = "+ 19 +";");
+		    	st3.executeUpdate("UPDATE student_group SET guide_alloted_2 = " + 19 +" WHERE group_id = "+ group_id_2 +";");
+		    	map_coguide.put(19, 0);
+	    	}
+		}
+		
+		//guide allotment for remaining groups
+		rs = st.executeQuery("SELECT * FROM student_group where dis = 0 ORDER BY avg_cgpa DESC;");
 		while(rs.next()) {
 			int group_id = rs.getInt(1);
 			int area_pref_1 = rs.getInt("area_pref_1");
@@ -115,12 +147,7 @@ public class AllotmentDao {
 			}
 		}
 		//Alloting co-guides
-		rs = st.executeQuery("SELECT * FROM teacher WHERE pref_id <= 8 ORDER BY pref_id;");
-		HashMap<Integer, Integer> map_coguide = new HashMap<>();
-		while(rs.next()) {
-			int teacher_id = rs.getInt("teacher_id");
-			map_coguide.put(teacher_id, 1);
-		}
+		
 		
 		rs = st.executeQuery("SELECT * FROM teacher WHERE pref_id > 8 ORDER BY pref_id;");
 		while(rs.next()) {

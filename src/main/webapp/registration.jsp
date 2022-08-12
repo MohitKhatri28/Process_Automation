@@ -32,7 +32,21 @@
                 <div class="card-body">
                     <h2 class="title">Registration Form</h2>
                     <form action="<%= request.getContextPath() %>/register" method="POST">
+                    <div class="row row-space">
+                        <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="year">
+                                    <option disabled="disabled" selected="selected">Session</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                            <br>
+                        </div>
+                        <br>
                         <div class="row row-space">
+                        	
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label"><strong>Leader</strong></label>

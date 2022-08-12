@@ -28,7 +28,7 @@ public class GroupDao {
 			count = rs.getInt("count");
 		}
 		//Insert into student_group
-		st.executeUpdate("INSERT INTO student_group (login_id, area_pref_1, area_pref_2, area_pref_3, avg_cgpa, group_num, dis) VALUES ("+ log_id + ","+group.getArea_pref_1() +", "+ group.getArea_pref_2()+", "+ group.getArea_pref_3()+", "+ group.getAvg_cgpa()+", "+(count+1) +", "+group.getDis() +");",Statement.RETURN_GENERATED_KEYS);
+		st.executeUpdate("INSERT INTO student_group (login_id, area_pref_1, area_pref_2, area_pref_3, avg_cgpa, group_num, dis, year) VALUES ("+ log_id + ","+group.getArea_pref_1() +", "+ group.getArea_pref_2()+", "+ group.getArea_pref_3()+", "+ group.getAvg_cgpa()+", "+(count+1) +", "+group.getDis() +", "+ group.getYear()+ ");",Statement.RETURN_GENERATED_KEYS);
 		rs = st.getGeneratedKeys();
 		//Storing last inserted group_id
 		int grp_id =0;

@@ -31,10 +31,18 @@ public class Group {
 	
 	private float avg_cgpa=0;
 	
+	private int year=0;
+	
 	private String username="";
 	private String password="";
 	
 	//Getters and Setters
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
 	public int getDis() {
 		return dis;
 	}

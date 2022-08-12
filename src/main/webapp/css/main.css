@@ -1,3 +1,4 @@
+
 /* ==========================================================================
    #FONT
    ========================================================================== */
@@ -61,9 +62,7 @@ html {
   margin: 0;
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
   box-sizing: inherit;
@@ -76,23 +75,12 @@ html {
  * A very simple reset that sits on top of Normalize.css.
  */
 body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-blockquote,
-p,
-pre,
-dl,
-dd,
-ol,
-ul,
+h1, h2, h3, h4, h5, h6,
+blockquote, p, pre,
+dl, dd, ol, ul,
 figure,
 hr,
-fieldset,
-legend {
+fieldset, legend {
   margin: 0;
   padding: 0;
 }
@@ -100,8 +88,8 @@ legend {
 /**
  * Remove trailing margins from nested lists.
  */
-li>ol,
-li>ul {
+li > ol,
+li > ul {
   margin-bottom: 0;
 }
 
@@ -142,12 +130,7 @@ body {
   font-size: 14px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
 
@@ -322,8 +305,7 @@ input[type="date" i] {
   padding: 14px;
 }
 
-.table-condensed td,
-.table-condensed th {
+.table-condensed td, .table-condensed th {
   font-size: 14px;
   font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
   font-weight: 400;
@@ -344,8 +326,7 @@ input[type="date" i] {
   margin-top: 5px;
 }
 
-.daterangepicker::after,
-.daterangepicker::before {
+.daterangepicker::after, .daterangepicker::before {
   display: none;
 }
 
@@ -450,11 +431,11 @@ input {
   cursor: pointer;
 }
 
-.radio-container input:checked~.checkmark {
+.radio-container input:checked ~ .checkmark {
   background-color: #e5e5e5;
 }
 
-.radio-container input:checked~.checkmark:after {
+.radio-container input:checked ~ .checkmark:after {
   display: block;
 }
 
@@ -503,7 +484,6 @@ input {
 .input-group {
   position: relative;
   margin-bottom: 22px;
-  width: 140px;
 }
 
 .input-group-icon {
@@ -651,7 +631,7 @@ input {
 }
 
 .card-4 .card-body {
-  padding: 30px 30px;
+  padding: 57px 65px;
   padding-bottom: 65px;
 }
 

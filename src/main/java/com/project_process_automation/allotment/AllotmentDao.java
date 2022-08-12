@@ -17,10 +17,26 @@ public class AllotmentDao {
 		Statement st4 = con.createStatement();
 		Statement st5 = con.createStatement();
 		
-		ResultSet rs = st.executeQuery("SELECT teacher_id FROM teacher;");
+		//nulling group alloted of teacher
+		st.executeUpdate("UPDATE teacher SET group_id_1 = null WHERE group_id_1 is not null;");
+		st.executeUpdate("UPDATE teacher SET group_id_2 = null WHERE group_id_2 is not null;");
+		st.executeUpdate("UPDATE teacher SET group_id_3 = null WHERE group_id_3 is not null;");
+		
+		ResultSet rs = null;
 		ResultSet rs2 = null;
 		ResultSet rs3 = null;
 		ResultSet rs4 = null;
+		
+		//getting current session
+		int year = 0;
+		
+		rs = st.executeQuery("SELECT MAX(year) AS currentYear FROM student_group;");
+		if(rs.next()) {
+			year = rs.getInt("currentYear");
+		}
+		
+		//giving space in map for allocation
+		rs = st.executeQuery("SELECT teacher_id FROM teacher WHERE active_id = 1;");
 		
 		//map for guides
 		HashMap<Integer, Integer> map = new HashMap<>();
@@ -30,7 +46,7 @@ public class AllotmentDao {
 		}
 		int t_id=0;
 		//map for co-guides
-		rs = st.executeQuery("SELECT * FROM teacher WHERE pref_id <= 8 ORDER BY pref_id;");
+		rs = st.executeQuery("SELECT * FROM teacher WHERE pref_id < 100 and active_id = 1 ORDER BY pref_id;");
 		HashMap<Integer, Integer> map_coguide = new HashMap<>();
 		while(rs.next()) {
 			int teacher_id = rs.getInt("teacher_id");
@@ -38,7 +54,7 @@ public class AllotmentDao {
 		}
 		
 		//allotment for DIS
-		rs = st.executeQuery("SELECT * FROM student_group where dis = 1 ORDER BY avg_cgpa DESC;");
+		rs = st.executeQuery("SELECT * FROM student_group where dis = 1 and year = "+year+" ORDER BY avg_cgpa DESC;");
 		if(rs.next()) {
 			int group_id = rs.getInt(1);
 			st2.executeUpdate("UPDATE teacher SET group_id_1 = " + group_id +" WHERE teacher_id = "+ 10 +";");
@@ -60,14 +76,14 @@ public class AllotmentDao {
 		}
 		
 		//guide allotment for remaining groups
-		rs = st.executeQuery("SELECT * FROM student_group where dis = 0 ORDER BY avg_cgpa DESC;");
+		rs = st.executeQuery("SELECT * FROM student_group where dis = 0 and year = "+ year + " ORDER BY avg_cgpa DESC;");
 		while(rs.next()) {
 			int group_id = rs.getInt(1);
 			int area_pref_1 = rs.getInt("area_pref_1");
 			int area_pref_2 = rs.getInt("area_pref_2");
 			int area_pref_3 = rs.getInt("area_pref_3");
 			
-			rs2 = st2.executeQuery("SELECT teacher_spec.teacher_id, teacher_spec.spec_id, teacher.teacher_id, teacher.pref_id FROM teacher_spec  JOIN teacher ON teacher_spec.teacher_id = teacher.teacher_id WHERE spec_id = "+ (100 + area_pref_1)+" ORDER BY pref_id;");
+			rs2 = st2.executeQuery("SELECT teacher_spec.teacher_id, teacher_spec.spec_id, teacher.active_id, teacher.teacher_id, teacher.pref_id FROM teacher_spec  JOIN teacher ON teacher_spec.teacher_id = teacher.teacher_id WHERE spec_id = "+ (100 + area_pref_1)+" AND teacher.active_id = 1 ORDER BY pref_id;");
 			boolean status=false;
 			while(rs2.next()) {
 				t_id =rs2.getInt(1);
@@ -87,7 +103,7 @@ public class AllotmentDao {
 				}
 			}	
 			if(status==false) {
-				rs3 = st3.executeQuery("SELECT teacher_spec.teacher_id, teacher_spec.spec_id, teacher.teacher_id, teacher.pref_id FROM teacher_spec  JOIN teacher ON teacher_spec.teacher_id = teacher.teacher_id WHERE spec_id = "+ (100 + area_pref_2)+" ORDER BY pref_id;");
+				rs3 = st3.executeQuery("SELECT teacher_spec.teacher_id, teacher_spec.spec_id, teacher.active_id, teacher.teacher_id, teacher.pref_id FROM teacher_spec  JOIN teacher ON teacher_spec.teacher_id = teacher.teacher_id WHERE spec_id = "+ (100 + area_pref_2)+" AND teacher.active_id = 1 ORDER BY pref_id;");
 				while(rs3.next()) {
 					t_id =rs3.getInt(1);
 					if(map.get(t_id)==2) {
@@ -106,7 +122,7 @@ public class AllotmentDao {
 					}
 				}
 				if(status==false){
-					rs4 = st4.executeQuery("SELECT teacher_spec.teacher_id, teacher_spec.spec_id, teacher.teacher_id, teacher.pref_id FROM teacher_spec  JOIN teacher ON teacher_spec.teacher_id = teacher.teacher_id WHERE spec_id = "+ (100 + area_pref_3)+" ORDER BY pref_id;");
+					rs4 = st4.executeQuery("SELECT teacher_spec.teacher_id, teacher_spec.spec_id, teacher.active_id, teacher.teacher_id, teacher.pref_id FROM teacher_spec  JOIN teacher ON teacher_spec.teacher_id = teacher.teacher_id WHERE spec_id = "+ (100 + area_pref_3)+" AND teacher.active_id = 1 ORDER BY pref_id;");
 					while(rs4.next()) {
 						t_id =rs4.getInt(1);
 						if(map.get(t_id)==2) {
@@ -149,7 +165,7 @@ public class AllotmentDao {
 		//Alloting co-guides
 		
 		
-		rs = st.executeQuery("SELECT * FROM teacher WHERE pref_id > 8 ORDER BY pref_id;");
+		rs = st.executeQuery("SELECT * FROM teacher WHERE pref_id >= 100 AND active_id = 1 ORDER BY pref_id;");
 		while(rs.next()) {
 			int group_id_1 = rs.getInt("group_id_1");
 			int group_id_2 = rs.getInt("group_id_2");
@@ -180,12 +196,4 @@ public class AllotmentDao {
 }
 
 	
-//		rs = st.executeQuery("select * from teacher where pref_id > 8 order by pref_id;");
-//		while(rs.next()) {
-//			int pref =rs.getInt("pref_id");
-//			int group_id_1 = rs.getInt("group_id_1");
-//			int group_id_2 = rs.getInt("group_id_2");
-//			st.executeUpdate("UPDATE teacher SET group_id_3 = " + group_id_1 +" WHERE pref_id = "+ (pref +1) +";");
-//			st.executeUpdate("UPDATE teacher SET group_id_3 = " + group_id_2 +" WHERE pref_id = "+ (pref +2) +";");
-//		}
 

@@ -12,17 +12,16 @@
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
-
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Page</title>
+    <title>Teams Data</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="css/tailwind.output.css" />
@@ -40,13 +39,12 @@
         <!-- Desktop sidebar -->
         <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
             <div class="py-4 text-gray-500 dark:text-gray-400">
-            
                 <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
                     Admin
                 </a>
                 <ul class="mt-6">
                     <li class="relative px-6 py-3">
-					<a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
                             href="admin.jsp">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -57,7 +55,7 @@
                             <span class="ml-4">Allot Guides</span>
                         </a>
                     </li>
-                
+           
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
                             href="allotment.jsp">
@@ -71,7 +69,7 @@
                         </a>
                     </li>
                     <li class="relative px-6 py-3">
-                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                        <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
                             href="addteacher.jsp">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -116,9 +114,8 @@
 				                </c:if>	
 				                			
 				     </c:forEach>
-                    
-                    
                 </ul>
+
 
 
 
@@ -144,7 +141,8 @@
                 </a>
                 <ul class="mt-6">
                     <li class="relative px-6 py-3">
-					<a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+
+                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
                             href="admin.jsp">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -169,7 +167,7 @@
                         </a>
                     </li>
                     <li class="relative px-6 py-3">
-                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                        <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
                             href="addteacher.jsp">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -216,7 +214,6 @@
 				     </c:forEach>
                     
                 </ul>
-            </div>
 
         </aside>
         <div class="flex flex-col flex-1 w-full">
@@ -285,18 +282,40 @@
                 </div>
             </header>
             <main class="h-full overflow-y-auto">
-				<form action="<%= request.getContextPath() %>/allot" method=POST>                           
+            	<form action="<%= request.getContextPath() %>/addTeacher" method=POST>
+				
+					<div class="add_teacher" >
+                        <label ><b>Teacher's Name:</b></label><br>
+                        <input type="text" id="fname" name="full_name"
+                            style="border:black; border-width:2px; border-style:solid;"><br>
+                        <label ><b>Create Username:</b></label><br>
+                        <input type="text" id="uname" name="username"
+                            style="border:black; border-width:2px; border-style:solid;"><br>
+                        <label ><b>Create Password:</b></label><br>
+                        <input type="password" id="password" name="password"
+                            style="border:black; border-width:2px; border-style:solid;"><br>
+
+                        <label for="priority"><b>Permanent Teacher:</b></label>
+                        <select name="permanent_id" id="priority">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select><br><br>
+                	</div>
+
+                           
 	                <div>
 	                    <button type="submit"
 	                        class="flex items-center justify-center px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple ">
-	                        Allot Guides
+	                        Add Teacher
 	                    </button>
 	                </div>
 				</form>
+                
+            </main>
         </div>
-        </main>
+
     </div>
-    </div>
+
     <!-- Modal backdrop. This what you want to place close to the closing body tag -->
     <div x-show="isModalOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0"
         x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150"
@@ -323,8 +342,27 @@
                 </button>
             </header>
             <!-- Modal body -->
-            
-            
+            <div class="mt-4 mb-6">
+                <!-- Modal title -->
+                <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300">
+                    Confirm Submission
+                </p>
+                <!-- Modal description -->
+                <p class="text-sm text-gray-700 dark:text-gray-400">
+
+                </p>
+            </div>
+            <footer
+                class="flex flex-col items-center justify-end px-6 py-3 -mx-6 -mb-4 space-y-4 sm:space-y-0 sm:space-x-6 sm:flex-row bg-gray-50 dark:bg-gray-800">
+                <button @click="closeModal"
+                    class="w-full px-5 py-3 text-sm font-medium leading-5 text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 sm:px-4 sm:py-2 sm:w-auto active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray">
+                    Go Back
+                </button>
+                <button
+                    class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                    Yes!!
+                </button>
+            </footer>
         </div>
     </div>
     <!-- End of modal backdrop -->

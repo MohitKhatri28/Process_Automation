@@ -53,6 +53,7 @@ public class GroupServlet extends HttpServlet {
 		int area_pref_3 = Integer.parseInt(request.getParameter("area_pref_3"));
 		float avg_cgpa = Float.parseFloat(request.getParameter("avg_cgpa"));
 		int dis = Integer.parseInt(request.getParameter("dis"));
+		int year = Integer.parseInt(request.getParameter("year"));
 		
 		String leader_phone_num = request.getParameter("leader_phone_num");
 		String leader_email_id = request.getParameter("leader_email_id");
@@ -96,6 +97,7 @@ public class GroupServlet extends HttpServlet {
 		group.setMem_3_email_id(mem_3_email_id);
 		group.setMem_4_phone_num(mem_4_phone_num);
 		group.setMem_4_email_id(mem_4_email_id);
+		group.setYear(year);
 		try {
 			groupDao.registerGroup(group);
 		} catch (ClassNotFoundException e) {

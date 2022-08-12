@@ -7,6 +7,7 @@
 	if(u==null){
 		response.sendRedirect("index.jsp");
 	}
+	int past_year = (int)session.getAttribute("past_year");
 	
 %>
 
@@ -34,7 +35,7 @@
 			<main>
 				<img src="images/heading2.png"  style="display:block; margin-left: auto; margin-right: auto; width: 50%;">
 				<sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://127.0.0.1:3306/project_process_automation?useSSl=false" user="root" password="Messidona#3"/>
-                <sql:query var="rs" dataSource="${db}">select * from student_group order by group_num;</sql:query>
+                <sql:query var="rs" dataSource="${db}">select * from student_group where year = ${past_year} order by group_num;</sql:query>
                                 
                 <table border="1px solid black" "cellpadding="5" style="width:100%; margin-left: auto; margin-right:auto;" >
 		            <caption><strong>List of Groups</strong></caption>

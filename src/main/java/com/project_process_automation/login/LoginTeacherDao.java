@@ -22,7 +22,7 @@ public class LoginTeacherDao {
 			
 			login_id = rs.getInt("login_id");
 			
-			rs = st.executeQuery("SELECT * FROM teacher WHERE login_id = " + login_id +";");
+			rs = st.executeQuery("SELECT * FROM teacher WHERE login_id = " + login_id +" and active_id = 1;");
 			if(rs.next()) {
 				login_teacher.setTeacher_id(rs.getInt("teacher_id"));
 				login_teacher.setTeacher_name(rs.getString("full_name"));

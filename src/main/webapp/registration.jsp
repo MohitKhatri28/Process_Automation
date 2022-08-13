@@ -34,12 +34,20 @@
                     <form action="<%= request.getContextPath() %>/register" method="POST">
                     <div class="row row-space">
                         <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="year">
-                                    <option disabled="disabled" selected="selected">Session</option>
-                                    <option value="2024">2024</option>
-                                    <option value="2023">2023</option>
-                                    <option value="2022">2022</option>
-                                </select>
+                                
+                                <select name="year" id="selectElementId"></select>
+                                <script>
+	                                var min = 2020,
+	                                max = new Date().getFullYear(),
+	                                select = document.getElementById('selectElementId');
+	
+		                            for (var i = max; i>=min; i--){
+		                                var opt = document.createElement('option');
+		                                opt.value = i;
+		                                opt.innerHTML = i;
+		                                select.appendChild(opt);
+		                            }
+								</script>
                                 <div class="select-dropdown"></div>
                             </div>
                             <br>

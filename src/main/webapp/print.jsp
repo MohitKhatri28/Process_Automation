@@ -25,20 +25,68 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<button onclick="printFunction()">Print</button>
-	
+	<button onclick="printFunction()">Print / Save as PDF</button>
+	<button onclick="Export2Doc('exportContent');">Export as .doc</button>
     <script>
       function printFunction() { 
         window.print(); 
       }
     </script>
+    <script>
+	function Export2Doc(element, filename = '') {
+	
+	            var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
+	            var postHtml = "</body></html>";
+	
+	            var html = preHtml + document.getElementById(element).innerHTML + postHtml;
+	
+	            var blob = new Blob(['\ufeff', html], {
+	                type: 'application/msword'
+	            });
+	
+	            var url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html);
+	
+	
+	            filename = filename ? filename + '.doc' : 'document.doc';
+	
+	
+	            var downloadLink = document.createElement("a");
+	
+	            document.body.appendChild(downloadLink);
+	
+	            if (navigator.msSaveOrOpenBlob) {
+	                navigator.msSaveOrOpenBlob(blob, filename);
+	            } else {
+	
+	                downloadLink.href = url;
+	                downloadLink.download = filename;
+	                downloadLink.click();
+	            }
+	
+	            document.body.removeChild(downloadLink);
+	        }
+
+		</script>
+    	<div id="exportContent">
 			<main>
+				<!-- 
+				
 				<img src="images/heading2.png"  style="display:block; margin-left: auto; margin-right: auto; width: 50%;">
+				 -->
 				<sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://127.0.0.1:3306/project_process_automation?useSSl=false" user="root" password="Messidona#3"/>
                 <sql:query var="rs" dataSource="${db}">select * from student_group where year = ${past_year} order by group_num;</sql:query>
+                 
+                 
+                 	<div style="width: 70%; margin-left: auto; margin-right: auto;">
+	                 	<h1 style="text-align: center;">Shri G.S. Institute of Technology and Science</h1>
+	                 	<h2 style="text-align: center;">Guide Allotment for UG Major Project</h2>
+	                 	<h2 style="text-align: center;">Session: ${past_year} </h2>
+                 	</div>
+                
+                 
                                 
                 <table border="1px solid black" "cellpadding="5" style="width:100%; margin-left: auto; margin-right:auto;" >
-		            <caption><strong>List of Groups</strong></caption>
+		            <caption><h3><strong>List of Groups</strong></h3></caption>
 		            <tr>
 		                <th style="width:7%">Group no.</th>
 		                <th style="width:17%">Members</th>
@@ -113,8 +161,24 @@
 		            	</c:forEach>
 		            </c:forEach>
         		</table>
-        		<img src="images/Capture.JPG"  style="display:block; margin-left: auto; margin-right: auto; width: 50%;">
+        		<br>
+        		<br>
+        		<br>
+        		<br>
+        		<br>
+                 
+                 	<div style="width: 70%; margin-left: auto; margin-right: auto;">
+				        <div style="width: 50%; height: 100px; float: left; margin-left: auto; margin-right: auto;"> 			     
+				        	<h2 style="text-align: center;">Head</h2> 
+				            <h2 style="text-align: center;">Computer Engg. Department</h2>	        			            
+				        </div>
+				        <div style="margin-left: 50%; height: 100px; margin-left: auto; margin-right: auto;">
+				        	<br>
+				        	<h2 style="text-align: center;">Professor In-charge </h2>			       			            
+				        </div>
+			    	</div>
+                 
 			</main>
-				
+		</div>		
 </body>
 </html>
